@@ -1,6 +1,6 @@
 # Vecmul Reverse Proxy
 
-这个项目是一个反向代理服务,用于将Vecmul WebSocket API转换为REST API。它允许用户通过HTTP请求与多种AI模型进行交互,包括GPT-4、Claude 3和Gemini等。
+这个项目是一个反向代理服务,用于将Vecmul WebSocket转换为REST API。它允许用户通过HTTP请求与多种AI模型进行交互,包括GPT-4、Claude 3和Gemini等。
 
 ## 项目结构
 
@@ -23,7 +23,7 @@
 1. 克隆仓库:
 
     ```bash
-    git clone  
+    git clone https://github.com/snailyp/vecmul-reverse.git
     cd vecmul-reverse
     ```
 
