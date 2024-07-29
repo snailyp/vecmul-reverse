@@ -11,6 +11,7 @@ from vecmul import VecmulWebSocket, receive_message
 import uvicorn
 from dotenv import load_dotenv
 import os
+from typing import List
 
 # 加载.env文件
 load_dotenv()
@@ -36,6 +37,18 @@ class ChatRequest(BaseModel):
     model: str
     messages: list[Message]
     stream: bool = False
+    
+    
+class Model(BaseModel):
+    id: str
+    object: str = "model"
+    created: int = int(datetime.now().timestamp())
+    owned_by: str = "openai"
+
+
+class ModelList(BaseModel):
+    object: str = "list"
+    data: List[Model]
 
 
 # 从.env文件读取APP_SECRET
@@ -64,6 +77,7 @@ MODEL_MAPPING = {
     "GPT-4": "GPT-4",
 }
 ALLOWED_MODELS = list(set(MODEL_MAPPING.values()))
+ALL_MODELS=list(set(MODEL_MAPPING.keys()))
 
 
 def verify_app_secret(credentials: HTTPAuthorizationCredentials = Depends(security)):
@@ -90,6 +104,12 @@ def create_chat_response(content: str, model: str, is_stream: bool = False, is_l
         ],
         "usage": None
     }
+
+
+@app.get("/v1/models")
+async def list_models(app_secret: str = Depends(verify_app_secret)):
+    models = [Model(id=model) for model in ALL_MODELS]
+    return ModelList(data=models)
 
 
 @app.post("/v1/chat/completions")
