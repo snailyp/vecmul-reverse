@@ -1,0 +1,7 @@
+websockets
+uvicorn
+fastapi
+pydantic
+starlette
+python-dotenv
+pyinstaller
