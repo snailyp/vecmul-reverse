@@ -18,7 +18,7 @@ def build_for_windows():
     PyInstaller.__main__.run([
         './vecmul_service.py',
         '--onefile',
-        '--name=aichat',
+        '--name=vecmul2api',
         '--add-data=.env:.',
     ])
 
@@ -27,7 +27,7 @@ def build_for_mac():
     PyInstaller.__main__.run([
         './vecmul_service.py',
         '--onefile',
-        '--name=aichat',
+        '--name=vecmul2api',
         '--add-data=.env:.',
     ])
 
