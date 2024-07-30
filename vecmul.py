@@ -28,7 +28,7 @@ async def receive_message(websocket):
             elif data.get("type") == "NEW_CHAT_CREATED":
                 return None
             else:
-                None
+                return None
 
         except websockets.exceptions.ConnectionClosed:
             logger.warning("Connection closed")
