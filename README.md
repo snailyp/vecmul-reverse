@@ -1,3 +1,5 @@
+# 已失效
+
 # vecmul_service
 
 这个项目是一个反向代理服务,用于将Vecmul WebSocket转换为REST API。它允许用户通过HTTP请求与多种AI模型进行交互,包括GPT-4、Claude 3和Gemini等。
